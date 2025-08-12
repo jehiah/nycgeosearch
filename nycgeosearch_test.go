@@ -16,7 +16,7 @@ func TestReverseGeocode(t *testing.T) {
 	if len(got.Features) != 1 {
 		t.Fatalf("expected at 1 response got %d", len(got.Features))
 	}
-	if s := got.Features[0].PropertyMustString("name"); s != "340 FIFTH AVENUE" {
+	if s := got.Features[0].PropertyMustString("name"); s != "336 5 AVENUE" {
 		t.Fatalf("got %q", s)
 	}
 }

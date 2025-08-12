@@ -70,10 +70,13 @@ func (c Client) call(ctx context.Context, path string, params *url.Values) (*geo
 	if err != nil {
 		return nil, err
 	}
-	defer resp.Body.Close()
 	if resp.StatusCode >= 300 {
 		return nil, fmt.Errorf("unexpected HTTP response %v", resp.StatusCode)
 	}
 	var data geojson.FeatureCollection
-	return &data, json.NewDecoder(resp.Body).Decode(&data)
+	err = json.NewDecoder(resp.Body).Decode(&data)
+	if err != nil {
+		return nil, err
+	}
+	return &data, resp.Body.Close()
 }
