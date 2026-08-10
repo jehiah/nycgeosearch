@@ -9,7 +9,7 @@ import (
 	"net/url"
 	"strconv"
 
-	geojson "github.com/paulmach/go.geojson"
+	"github.com/paulmach/orb/geojson"
 )
 
 // Client implements the pelias format against the NYC Planning labs GeoSearch endpoint
